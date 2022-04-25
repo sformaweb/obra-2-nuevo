@@ -2,7 +2,7 @@
 require '../conexion/conexion.php';
 require '../conexion/sesion.php';
 
-// Menú y script title que toma el header.
+// MENÚ E SCRIPT QUE TOMA DO HEADER
 ob_start();
 include_once '../inc/header.php';
 
@@ -45,21 +45,22 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
 <!DOCTYPE html>
 <html>
 
-  <!--  Encabezado: título y cuadro búsqueda -->
+  <!--  ENCABEZADO: TÍTULO E CADRO DE BÚSQUEDA -->
   <div class="container mb-4">
     <nav class="navbar navbar-light my-4">
       <div class="container-fluid">
-        <h2 class="text-primary  w-25">Empresas</h2>
+      <h3 class="text-primary w-25"><b>EMPRESAS</b></h3>
+
 
         <form class="d-flex" action="./busqueda.php" method="POST">
-          <!-- Botón añadir nuevo -->
-          <div class="mr-4"> <a href="nuevo.php" class="btn btn-white mb-3" alt="Engadir nova empres">
+          <!-- BOTÓN ENGADIR NOVO -->
+          <div class="mr-4"> <a href="nuevo.php" class="btn btn-white mb-3" alt="Engadir nova empresa">
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
               </svg></a>
           </div>
-          <!-- Buscador y botón buscar -->
+          <!-- BUSCADOR E BOTÓN BUSCAR -->
           <div class="input-group mb-3 mx-2 w-6" alt="Búsqueda de empresas">
             <input id="campo" name="campo" class="form-control" type="text" placeholder="Búsqueda" aria-label="Search">
             <input type="submit" id="enviar" name="enviar" value="Buscar" class="btn btn-primary text-white rounded-0">
@@ -68,7 +69,7 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
       </div>
     </nav>
 
-    <!-- TABLA -->
+    <!-- TÁBOA -->
     <div id="tabla" class="row table-responsive">
       <table class="table table-striped table-hover">
         <thead>
@@ -84,7 +85,7 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
         </thead>
 
         <tbody>
-           <!-- METODO PARA PAGINACION NUEVO-->
+           <!--MÉTODO PARA NOVA PAXINACIÓN -->
       <?php while ($row = $result->fetch_assoc()) : ?>
             <tr>
               <td><?php echo $row['nome']; ?></td>
@@ -96,7 +97,7 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
               <!-- <td><?php echo $row['ofertas_contratacion']; ?></td> -->
               <!-- <td><?php echo $row['ofertas_formacion']; ?></td> -->
               <!-- Iconos acciones -->
-              <td class="d-flex"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye " viewBox="0 0 16 16">
+              <td class="d-flex"><a href="ver_ficha.php?id=<?php echo $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye " viewBox="0 0 16 16">
                     <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                     <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                   </svg></a>
@@ -113,7 +114,7 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
         </tbody>
       </table>
     </div>
-<!-- FUNCIÓN DE PAGINACIÓN SIN ESTILOS -->
+<!-- FUNCIÓN DE PAXINACIÓN (SEN ESTILOS) -->
 <?php if (ceil($total_pages / $num_results_on_page) > 0) : ?>
     <ul class="pagination">
       <?php if ($page > 1) : ?>
@@ -146,7 +147,7 @@ if ($stmt = $mysqli->prepare('SELECT * FROM empresas ORDER BY id LIMIT ?,?')) {
 
 </div>
 
-  <!-- Componente footer -->
+  <!-- COMPOÑENTE FOOTER -->
   <?php
   include_once '../inc/footer.php';
   ?>
