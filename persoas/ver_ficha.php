@@ -275,10 +275,6 @@ $row = $ficha->fetch_array(MYSQLI_ASSOC);
       </div>
     </div>
 
-
-
-
-
   </main>
 
   <!--COMPOÑENTE FOOTER-->
